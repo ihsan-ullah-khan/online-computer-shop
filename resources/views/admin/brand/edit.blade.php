@@ -1,5 +1,5 @@
 @extends('layouts.admin-home')
-@section('title', 'Add Category')
+@section('title', 'Edit Brand')
 @section('content')
     <main class="h-full overflow-y-auto">
         <div class="container px-6 mx-auto grid">

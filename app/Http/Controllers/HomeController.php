@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -13,13 +14,8 @@ class HomeController extends Controller
             return view('admin.home');
         }else
         {
-            return view('user.home');
+            $products = Product::with('images')->orderByDesc('id')->get();
+            return view('user.home', compact('products'));
         }
-    }
-
-    public function show_users()
-    {
-        $users = User::where('user_type', 'U')->get();
-        return view('admin.user.index', compact('users'));
     }
 }

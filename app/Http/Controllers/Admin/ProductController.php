@@ -58,7 +58,10 @@ class ProductController extends Controller
 
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        $images = Images::where('product_id', $product->id)->get();
+
+        return view('admin.products.show');
     }
 
     public function edit($id)

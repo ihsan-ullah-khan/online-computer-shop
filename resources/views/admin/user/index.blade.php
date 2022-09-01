@@ -9,6 +9,9 @@
                 >
                     Users
                 </h2>
+                <x-link href="{{ route('users.create') }}">
+                    Add User
+                </x-link>
             </div>
 
 
@@ -53,7 +56,7 @@
                                 </td>
                                 <td class="px-4 py-3 w-12">
                                     <div class="flex justify-end space-x-4 text-sm">
-                                        <a href="#"
+                                        <a href="{{ route('users.edit', $user) }}"
                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                            aria-label="Edit"
                                         >
@@ -68,7 +71,7 @@
                                             </svg>
                                         </a>
                                         <a href="javascript:void(0);"
-{{--                                           onclick="if(window.confirm('Are you sure you want to delete this question?')){ document.getElementById('delete-{{  }}').submit();  }"--}}
+                                           onclick="if(window.confirm('Are you sure you want to delete this question?')){ document.getElementById('delete-{{ $user->id }}').submit();  }"
                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                            aria-label="Delete"
                                         >
@@ -85,11 +88,11 @@
                                                 ></path>
                                             </svg>
                                         </a>
-{{--                                        <form method="post" id="delete-{{  }}"--}}
-{{--                                              action="{{ route('brands.destroy') }}">--}}
-{{--                                            @csrf--}}
-{{--                                            @method('delete')--}}
-{{--                                        </form>--}}
+                                        <form method="post" id="delete-{{ $user->id }}"
+                                              action="{{ route('users.destroy', $user) }}">
+                                            @csrf
+                                            @method('delete')
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
