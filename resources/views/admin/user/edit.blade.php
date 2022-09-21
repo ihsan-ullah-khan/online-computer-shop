@@ -7,7 +7,7 @@
                 <h2
                     class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
                 >
-                    Add User
+                    Update User
                 </h2>
                 <x-link href="{{ route('users.index') }}">
                     Go Back
@@ -25,7 +25,6 @@
                                 <x-input id="name"
                                        autofocus
                                        type="text"
-                                       placeholder="Enter User's Name"
                                        name="name"
                                          :value="old('name')?? $user->name"
                                        class="block w-full mt-1 m-4 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none @error('name') focus:border-red-400 focus:shadow-outline-red focus:ring-red-200 @else focus:border-purple-400 focus:shadow-outline-purple focus:border-indigo-300 focus:ring-indigo-200 @enderror focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
@@ -35,6 +34,7 @@
                             <span class="inline-block mt-1 w-full text-sm text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
+                        <!-- User's Email -->
                         <div>
                             <label for="email" class="block text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">Email</span>
@@ -65,9 +65,42 @@
                             <span class="inline-block mt-1 w-full text-sm text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
+                        <!-- User's Phone -->
+                        <div>
+                            <label for="phone" class="block text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Phone</span>
+                                <x-input id="phone"
+                                         autofocus
+                                         type="text"
+                                         placeholder="Enter User's Name"
+                                         name="phone"
+                                         :value="old('phone')?? $user->phone"
+                                         class="block w-full mt-1 m-4 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none @error('phone') focus:border-red-400 focus:shadow-outline-red focus:ring-red-200 @else focus:border-purple-400 focus:shadow-outline-purple focus:border-indigo-300 focus:ring-indigo-200 @enderror focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                />
+                            </label>
+                            @error('phone')
+                            <span class="inline-block mt-1 w-full text-sm text-red-600">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <!-- User's Address -->
+                        <div>
+                            <label for="address" class="block text-sm">
+                                <span class="text-gray-700 dark:text-gray-400">Address</span>
+                                <x-input id="address"
+                                         autofocus
+                                         type="text"
+                                         name="address"
+                                         :value="old('address')?? $user->address"
+                                         class="block w-full mt-1 m-4 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none @error('address') focus:border-red-400 focus:shadow-outline-red focus:ring-red-200 @else focus:border-purple-400 focus:shadow-outline-purple focus:border-indigo-300 focus:ring-indigo-200 @enderror focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
+                                />
+                            </label>
+                            @error('address')
+                            <span class="inline-block mt-1 w-full text-sm text-red-600">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="items-center justify-between m-4">
                             <x-button>
-                                Add User
+                                Update User
                             </x-button>
                         </div>
                     </form>

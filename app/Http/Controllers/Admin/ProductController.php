@@ -8,27 +8,30 @@ use App\Models\Category;
 use App\Models\Images;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Nette\Utils\Image;
 
 class ProductController extends Controller
 {
+    protected  $image_path = 'public/images/';
 
     public function index()
     {
-        $products = Product::with('images')->orderByDesc('id')->get();
-        return view('admin.product.index', compact('products'));
+        return view('admin.product.index', [
+           'products' => Product::with('images')->orderByDesc('id')->paginate(5),
+        ]);
     }
-
 
     public function create()
     {
-        $categories = Category::all();
-        $brands = Brand::all();
-        return view('admin.product.create', compact('categories', 'brands'));
+        return view('admin.product.create', [
+            'categories' => Category::all(),
+            'brands' => Brand::all()
+        ]);
     }
 
     public function store(Request $request)
     {
-
         request()->validate([
             'title' => 'required',
             'category_id' => 'required',
@@ -37,17 +40,18 @@ class ProductController extends Controller
             'product_classification' => 'required',
             'price' => 'required',
         ]);
-
         $product = Product::create($request->only(['title', 'category_id', 'brand_id', 'product_description', 'product_classification', 'price']));
+        if ($images = $request->file('images'))
+        {
+            foreach ($images as $image){
+            $filename = $product->id . '-' . $image->getClientOriginalName();
 
-        $images = $request->file('images');
+            Storage::disk('local')->put($this->image_path .$filename, $image->getContent());
 
-        foreach ($images as $image ){
-            if ($image) {
-                Images::create([
-                    'product_id' => $product->id,
-                    'image' => $image->store('public/images'),
-                ]);
+            Images::create([
+                'product_id' => $product->id,
+                'image' => $filename,
+            ]);
             }
         }
         return redirect()
@@ -55,29 +59,27 @@ class ProductController extends Controller
             ->with('flash', ['type', 'success', 'message' => 'Product Added Successfully']);
     }
 
-
     public function show($id)
     {
         $product = Product::find($id);
         $images = Images::where('product_id', $product->id)->get();
 
-        return view('admin.products.show');
+        return view('admin.product.show', compact('product', 'images'));
     }
 
     public function edit($id)
     {
-        $product = Product::find($id);
-        $images = Images::where('product_id', $product->id)->get();
-        $categories = Category::all();
-        $brands = Brand::all();
-        return view('admin.product.edit', compact('product', 'images', 'categories', 'brands'));
+        return view('admin.product.edit',[
+            'product' => Product::find($id),
+            'categories' => Category::all(),
+            'brands' => Brand::all(),
+        ]);
     }
-
 
     public function update(Request $request, $id)
     {
         if ( $product = Product::find($id)){
-            $attributes = request()->validate([
+            request()->validate([
                 'title' => 'required',
                 'category_id' => 'required',
                 'brand_id' => 'required',
@@ -85,17 +87,17 @@ class ProductController extends Controller
                 'product_classification' => 'required',
                 'price' => 'required',
             ]);
-            $product->update($attributes);
-            if ($image = Images::where('product_id', $product->id)){
-                $image->delete();
-            }
-            $images = $request->file('images');
+            $product->update($request->only(['title', 'category_id', 'brand_id', 'product_description', 'product_classification', 'price']));
+            if ($images = $request->file('images'))
+            {
+                foreach ($images as $image){
+                    $filename = $product->id . '-' . $image->getClientOriginalName();
 
-            foreach ($images as $image ){
-                if ($image) {
+                    Storage::disk('local')->put($this->image_path .$filename, $image->getContent());
+
                     Images::create([
                         'product_id' => $product->id,
-                        'image' => $image->store('public/images'),
+                        'image' => $filename,
                     ]);
                 }
             }
@@ -104,7 +106,6 @@ class ProductController extends Controller
                 ->with('flash', ['type', 'success', 'message' => 'Product Updated Successfully']);
         }
     }
-
 
     public function destroy($id)
     {

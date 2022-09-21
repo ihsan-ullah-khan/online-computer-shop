@@ -26,9 +26,9 @@
                         <tr
                             class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800"
                         >
-                            <th class="px-4 py-3 w-12">Product Id</th>
                             <th class="px-4 py-3">Images</th>
                             <th class="px-4 py-3">Product Title</th>
+                            <th class="px-4 py-3">Product Price</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -37,23 +37,32 @@
                         >
                         @forelse($products as $product)
                             <tr class="text-gray-700 dark:text-gray-400">
-                                <td class="px-4 py-3 text-sm">
-                                    {{ $product->id }}
-                                </td>
-                                <td class="px-4 py-3">
-                                    @foreach($product->images as $image)
+                                <td class="px-4 py-3 w-24">
                                     <div class="flex items-center text-sm">
                                         <div>
-                                            <p class="font-semibold">{{ $image->id }}</p>
+                                            <img class="w-20 h-20 rounded-md object-fit"
+                                                src="{{ asset('storage/images/' . $product->images[0]->image) }}" alt="">
                                         </div>
                                     </div>
-                                    @endforeach
                                 </td>
                                 <td class="px-4 py-3 text-sm">
                                     {{ $product->title }}
                                 </td>
+                                <td class="px-4 py-3 text-sm">
+                                    ${{ $product->price }}
+                                </td>
                                 <td class="px-4 py-3 w-12">
                                     <div class="flex justify-end space-x-4 text-sm">
+{{--                                        <a href="{{ route('products.show', $product) }}"--}}
+{{--                                           class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"--}}
+{{--                                           aria-label="Edit"--}}
+{{--                                        >--}}
+{{--                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">--}}
+{{--                                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />--}}
+{{--                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />--}}
+{{--                                            </svg>--}}
+
+{{--                                        </a>--}}
                                         <a href="{{ route('products.edit', $product) }}"
                                            class="flex items-center justify-between px-2 py-2 text-sm font-medium leading-5 text-purple-600 rounded-lg dark:text-gray-400 focus:outline-none focus:shadow-outline-gray"
                                            aria-label="Edit"
@@ -98,13 +107,16 @@
                             <tr class="text-gray-700 dark:text-gray-400 bg-orange-100">
                                 <td colspan="4" class="px-4 py-3">
                                     <div class="flex justify-center text-sm">
-                                        <p class="font-semibold">No Category Available.</p>
+                                        <p class="font-semibold">No Products Available.</p>
                                     </div>
                                 </td>
                             </tr>
                         @endforelse
                         </tbody>
                     </table>
+                        <div class="flex items-center justify-end">
+                            {{ $products->links() }}
+                        </div>
                 </div>
             </div>
         </div>

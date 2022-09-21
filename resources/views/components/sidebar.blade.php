@@ -7,7 +7,7 @@
             class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
             href="/"
         >
-            Online Computer Shop
+            Computer Shop
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -108,6 +108,52 @@
             <li class="relative px-6 py-3">
                 <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('contacts.index') }}"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                        ></path>
+                        <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                    </svg>
+                    <span class="ml-4">Messages</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a
+                    class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('carts.list') }}"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                        ></path>
+                        <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                    </svg>
+                    <span class="ml-4">Carts</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a
+                    class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('products.index') }}"
                 >
                     <svg
@@ -148,7 +194,7 @@
                         d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
                     ></path>
                   </svg>
-                  <span class="ml-4">Pages</span>
+                  <span class="ml-4">Orders</span>
                 </span>
                     <svg
                         class="w-4 h-4"
@@ -177,31 +223,27 @@
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/login.html">Login</a>
+                            <a class="w-full" href="{{ route('all.orders') }}">All Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/create-account.html">
-                                Create account
-                            </a>
+                            <a class="w-full" href="{{ route('new.orders') }}">New Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/forgot-password.html">
-                                Forgot password
-                            </a>
+                            <a class="w-full" href="{{ route('shipped.orders') }}">Shipped Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/404.html">404</a>
+                            <a class="w-full" href="{{ route('deliver.orders') }}">Delivered Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/blank.html">Blank</a>
+                            <a class="w-full" href="{{ route('return.orders') }}">Retured Orders</a>
                         </li>
                     </ul>
                 </template>
@@ -238,7 +280,7 @@
             class="ml-6 text-lg font-bold text-gray-800 dark:text-gray-200"
             href="#"
         >
-            Online Computer Shop
+            Computer Shop
         </a>
         <ul class="mt-6">
             <li class="relative px-6 py-3">
@@ -339,6 +381,29 @@
             <li class="relative px-6 py-3">
                 <a
                     class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+                    href="{{ route('carts.list') }}"
+                >
+                    <svg
+                        class="w-5 h-5"
+                        aria-hidden="true"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
+                        ></path>
+                        <path d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path>
+                    </svg>
+                    <span class="ml-4">Cart</span>
+                </a>
+            </li>
+            <li class="relative px-6 py-3">
+                <a
+                    class="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                     href="{{ route('products.index') }}"
                 >
                     <svg
@@ -379,7 +444,7 @@
                         d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
                     ></path>
                   </svg>
-                  <span class="ml-4">Pages</span>
+                  <span class="ml-4">Orders</span>
                 </span>
                     <svg
                         class="w-4 h-4"
@@ -408,31 +473,27 @@
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/login.html">Login</a>
+                            <a class="w-full" href="{{ route('all.orders') }}">All Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/create-account.html">
-                                Create account
-                            </a>
+                            <a class="w-full" href="{{ route('new.orders') }}">New Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/forgot-password.html">
-                                Forgot password
-                            </a>
+                            <a class="w-full" href="{{ route('shipped.orders') }}">Shipped Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/404.html">404</a>
+                            <a class="w-full" href="{{ route('deliver.orders') }}">Delivered Orders</a>
                         </li>
                         <li
                             class="px-2 py-1 transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
                         >
-                            <a class="w-full" href="pages/blank.html">Blank</a>
+                            <a class="w-full" href="{{ route('return.orders') }}">Retured Orders</a>
                         </li>
                     </ul>
                 </template>

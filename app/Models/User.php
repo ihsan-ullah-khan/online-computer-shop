@@ -77,4 +77,17 @@ class User extends Authenticatable
     {
         $query->where('user_type', User::USER);
     }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+    public function order()
+    {
+        return $this->hasOne(Order::class);
+    }
+    public function contacts()
+    {
+        return $this->hasMany(Contact::class);
+    }
 }

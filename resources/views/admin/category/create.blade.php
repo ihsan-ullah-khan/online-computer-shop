@@ -29,7 +29,7 @@
                                  name="category_name"
                                  :value="old('category_name')"
                                  required autofocus/>
-                        @error('name')
+                        @error('category_name')
                         <span class="inline-block mt-1 w-full text-sm text-red-600">{{ $message }}</span>
                         @enderror
                     </div>

@@ -5,11 +5,13 @@
     <title>@yield('title')</title>
     <meta name="description" content="Free open source Tailwind CSS Store template">
     <meta name="keywords"
-          content="tailwind,tailwindcss,tailwind css,css,starter template,free template,store template, shop layout, minimal, monochrome, minimalistic, theme, nordic">
+          content="*,tailwind,tailwindcss,tailwind css,css,starter template,free template,store template, shop layout, minimal, monochrome, minimalistic, theme, nordic">
 
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+    <link rel="stylesheet" href="{{ asset('assets/css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/fonts.css') }}">
 
-    <link href="https://fonts.googleapis.com/css?family=Work+Sans:200,400&display=swap" rel="stylesheet">
+    <script src="{{ asset('assets/js/alpinejs.min.js') }}"></script>
+
 
     <style>
         .work-sans {
@@ -41,7 +43,8 @@
 
         #carousel-1:checked ~ .control-1,
         #carousel-2:checked ~ .control-2,
-        #carousel-3:checked ~ .control-3 {
+        #carousel-3:checked ~ .control-3,
+        #carousel-4:checked ~ .control-4{
             display: block;
         }
 

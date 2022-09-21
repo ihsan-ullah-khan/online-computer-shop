@@ -21,12 +21,23 @@
 
             <div class="mt-4">
                 <x-jet-label for="phone" value="{{ __('Phone') }}" />
-                <x-jet-input id="phone" class="block mt-1 w-full" type="phone" name="phone" :value="old('phone')" required />
+                <input
+                    id="phone"
+                    class="w-full border border-gray-300 mt-2 focus:bg-white bg-white rounded-lg px-2 py-2 @error('name') focus:border-red-400 focus:shadow-outline-red focus:ring-red-200 @else focus:border-purple-400 focus:shadow-outline-purple focus:border-indigo-300 focus:ring-indigo-200 @enderror"
+                    type="phone"
+                    name="phone"
+                    :value="old('phone')" required />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="address" value="{{ __('Address') }}" />
-                <x-jet-input id="address" class="block mt-1 w-full" type="address" name="address" :value="old('address')" required />
+                <input
+                    id="address"
+                    class="w-full border border-gray-300 mt-2 focus:bg-white bg-white rounded-lg px-2 py-2 @error('name') focus:border-red-400 focus:shadow-outline-red focus:ring-red-200 @else focus:border-purple-400 focus:shadow-outline-purple focus:border-indigo-300 focus:ring-indigo-200 @enderror"
+                    type="address"
+                    name="address"
+                    :value="old('address')"
+                    required />
             </div>
 
             <div class="mt-4">

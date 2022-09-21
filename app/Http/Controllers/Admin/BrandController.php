@@ -11,8 +11,9 @@ class BrandController extends Controller
 
     public function index()
     {
-        $brands = Brand::all();
-        return view('admin.brand.index', compact('brands'));
+        return view('admin.brand.index', [
+            'brands' => Brand::all(),
+        ]);
     }
 
     public function create()
@@ -42,10 +43,10 @@ class BrandController extends Controller
 
     public function edit($id)
     {
-        $brand = Brand::find($id);
-        return view('admin.brand.edit', compact('brand'));
+        return view('admin.brand.edit', [
+            'brand' => Brand::find($id),
+        ]);
     }
-
 
     public function update(Request $request, $id)
     {

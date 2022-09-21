@@ -34,7 +34,7 @@
                             <span class="inline-block mt-1 w-full text-sm text-red-600">{{ $message }}</span>
                             @enderror
                         </div>
-                        <div class="flex md:flex-col">
+                        <div class="flex">
                         <div class="mt-2 mr-2 w-full">
                             <label for="category_id" class="block text-sm">
                                 <span class="text-gray-700 dark:text-gray-400">Category</span>
@@ -93,7 +93,6 @@
                                        placeholder="Enter Product Classification"
                                        name="product_classification"
                                        class="block w-full mt-2 m-4 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none @error('product_classification') focus:border-red-400 focus:shadow-outline-red focus:ring-red-200 @else focus:border-purple-400 focus:shadow-outline-purple focus:border-indigo-300 focus:ring-indigo-200 @enderror focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                                       placeholder="Jane Doe"
                                 ></textarea>
                             </label>
                             @error('product_classification')

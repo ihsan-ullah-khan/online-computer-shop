@@ -29,6 +29,7 @@
                             <th class="px-4 py-3 w-12">User Id</th>
                             <th class="px-4 py-3">User Name</th>
                             <th class="px-4 py-3">User Email</th>
+                            <th class="px-4 py-3">User Address</th>
                             <th></th>
                         </tr>
                         </thead>
@@ -38,7 +39,7 @@
                         @forelse($users as $user)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3 text-sm">
-                                    {{ $user->id }}
+                                    {{ $loop->index+1 }}
                                 </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center text-sm">
@@ -51,6 +52,13 @@
                                     <div class="flex items-center text-sm">
                                         <div>
                                             <p class="font-semibold">{{ $user->email }}</p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <div class="flex items-center text-sm">
+                                        <div>
+                                            <p class="font-semibold">{{ $user->address }}</p>
                                         </div>
                                     </div>
                                 </td>
@@ -107,6 +115,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                        <div class="flex items-center justify-end">
+                            {{ $users->links() }}
+                        </div>
                 </div>
             </div>
         </div>

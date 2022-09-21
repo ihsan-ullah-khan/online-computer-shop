@@ -37,7 +37,7 @@
                         @forelse($categories as $category)
                             <tr class="text-gray-700 dark:text-gray-400">
                                 <td class="px-4 py-3 text-sm">
-                                    {{ $category->id }}
+                                    {{ $loop->index+1 }}
                                 </td>
                                 <td class="px-4 py-3">
                                     <div class="flex items-center text-sm">
