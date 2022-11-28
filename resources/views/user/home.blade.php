@@ -93,8 +93,13 @@
                     <div>
                         <a href="{{ route('uproducts.show', $product) }}">
                             <div class="">
+                                @if(count($product->images) == 0)
+                                    <img class="hover:grow hover:shadow-lg p-2 h-64 object-fit"
+                                         src="{{ asset('assets/img/img.JPEG')}}" alt="">
+                                @else
                                 <img class="hover:grow hover:shadow-lg p-2 h-64 object-fit"
                                      src="{{ asset('storage/images/'. $product->images[0]->image) }}">
+                                @endif
                             </div>
                             <div class="pt-3 flex items-center justify-start">
                                 <p class="font-semibold text-sm"><a

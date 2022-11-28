@@ -6,8 +6,13 @@
             @foreach($products as $product)
                 <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
                     <a href="#">
+                        @if(count($product->images) == 0)
+                            <img class="hover:grow hover:shadow-lg h-64 object-fit"
+                                 src="{{ asset('assets/img/img.JPEG')}}" alt="">
+                        @else
                         <img class="hover:grow hover:shadow-lg h-64 object-fit"
                              src="{{ asset('storage/images/'. $product->images[0]->image) }}">
+                        @endif
                         <div class="pt-3 flex items-center justify-between">
                             <p class=""><a href="{{ route('products.show', $product) }}">{{ $product->title }}</a></p>
                             <svg class="h-6 w-6 fill-current text-gray-500 hover:text-black"

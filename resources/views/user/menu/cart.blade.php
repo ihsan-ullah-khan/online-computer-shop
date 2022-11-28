@@ -31,9 +31,14 @@
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <div>
+                                        @if(count($cartItem->product->images) == 0)
+                                            <img class="w-12 h-12 rounded-md object-fit"
+                                                 src="{{ asset('assets/img/img.JPEG')}}" alt="">
+                                        @else
                                         <img
                                             class="w-20 h-20"
                                             src="{{ asset('storage/images/'. $cartItem->product->images[0]->image) }}" alt="">
+                                        @endif
                                     </div>
                                 </div>
                             </td>

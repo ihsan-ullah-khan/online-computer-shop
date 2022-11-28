@@ -35,10 +35,15 @@
                             <td class="px-4 py-3">
                                 <div class="flex items-center text-sm">
                                     <div>
+                                        @if(count($order->product->images) == 0)
+                                            <img class="w-12 h-12 rounded-md object-fit"
+                                                 src="{{ asset('assets/img/img.JPEG')}}" alt="">
+                                        @else
                                         <img
                                             class="w-12 h-12"
                                             src="{{ asset('storage/images/'. $order->product->images[0]->image) }}"
                                             alt="">
+                                        @endif
                                     </div>
                                 </div>
                             </td>
